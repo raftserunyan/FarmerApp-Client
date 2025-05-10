@@ -112,7 +112,7 @@ export const TableContainer = styled.div`
     tbody {
       display: block;
       width: 100%;
-      height: 370px;
+      height: 100%;
       overflow: auto;
       ::-webkit-scrollbar {
         width: 10px;
