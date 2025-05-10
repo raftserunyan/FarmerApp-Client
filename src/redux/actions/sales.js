@@ -56,7 +56,9 @@ export const createSale = values => async dispatch => {
 
 export const deleteSale = ids => async dispatch => {
 	try {
-		await HttpService.delete('sales', { id: ids[0] });
+		for (const id of ids) {
+			await HttpService.delete('sales', { id });
+		}
 
 		dispatch({
 			type: SALES_TYPES.DELETE_SALE,

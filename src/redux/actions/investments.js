@@ -62,7 +62,9 @@ export const createInvestment =
 
 export const deleteInvestment = ids => async dispatch => {
 	try {
-		await HttpService.delete('investments', { id: ids[0] });
+		for (const id of ids) {
+			await HttpService.delete('investments', { id });
+		}
 
 		dispatch({
 			type: INVESTMENTS_TYPES.DELETE_INVESTMENT,

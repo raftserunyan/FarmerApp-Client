@@ -143,13 +143,6 @@ export const Table = ({
 	const selectedFirstRow = selectedFlatRows[0]?.original;
 	let listToShow = rows;
 
-	if (rows.length > pageRowCount) {
-		listToShow = rows.slice(
-			(currentPage - 1) * pageRowCount,
-			(currentPage - 1) * pageRowCount + pageRowCount
-		);
-	}
-
 	const changePage = useCallback(
 		page => {
 			const currentQuery = qs.parse(
@@ -245,7 +238,7 @@ export const Table = ({
 					key: 3,
 					title: 'Ջնջել',
 					icon: deleteIcon,
-					disabled: selectedFlatRows.length !== 1,
+					disabled: selectedFlatRows.length < 1,
 					onClick: () =>
 						withConfirmation({
 							onYes: () =>
@@ -290,7 +283,8 @@ export const Table = ({
               Գործողություններ
             </S.FixedActionsBarHeader> */}
 					<S.FixedActionsBarTitle>
-						{title}
+						{typeof title === 'string' ? title : title.map(item => <span key={item}>{item}</span>)}
+						{/* {title} */}
 					</S.FixedActionsBarTitle>
 					<S.ActionsList>
 						{isGroupsPage && (

@@ -67,9 +67,11 @@ export const createTreatment = values => async dispatch => {
 
 export const deleteTreatment = ids => async dispatch => {
 	try {
-		await HttpService.delete(`treatments`, {
-			id: ids[0],
-		});
+		for (const id of ids) {
+			await HttpService.delete(`treatments`, {
+				id,
+			});
+		}
 
 		dispatch({
 			type: TREATMENTS_TYPES.DELETE_TREATMENT,

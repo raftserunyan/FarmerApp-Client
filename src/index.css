@@ -1,6 +1,12 @@
 html {
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
+
+  transform: scale(0.9); /* 90% of original size */
+  transform-origin: top left;
+  width: 111.11%; /* 1 / 0.9 to compensate for shrinking */
+  height: 111.11%;
+  overflow: hidden;
 }
 
 body {

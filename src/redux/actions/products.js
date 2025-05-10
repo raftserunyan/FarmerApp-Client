@@ -60,9 +60,11 @@ export const createProduct = values => async dispatch => {
 
 export const deleteProduct = ids => async dispatch => {
 	try {
-		await HttpService.delete(`products`, {
-			id: ids[0],
-		});
+		for (const id of ids) {
+			await HttpService.delete(`products`, {
+				id,
+			});
+		}
 
 		dispatch({
 			type: PRODUCTS_TYPES.DELETE_PRODUCT,

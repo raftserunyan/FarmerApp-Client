@@ -55,9 +55,11 @@ export const createUser = values => async dispatch => {
 
 export const deleteUser = ids => async dispatch => {
 	try {
-		await HttpService.delete('user', {
-			id: ids[0],
-		});
+		for (const id of ids) {
+			await HttpService.delete('user', {
+				id
+			});
+		}
 
 		dispatch({
 			type: USERS_TYPES.DELETE_USER,

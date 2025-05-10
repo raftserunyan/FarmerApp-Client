@@ -267,6 +267,8 @@ export const FixedActionsBar = styled.div`
 `
 
 export const FixedActionsBarTitle = styled.div`
+display: flex;
+flex-direction: column;
   font-size: 18px;
   font-weight: 500;
 `

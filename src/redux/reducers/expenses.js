@@ -17,6 +17,9 @@ export const expenses = (state = initialState, action) => {
 				list: action.list,
 				total: action.total,
 				totalExpensesAmount: action.totalExpensesAmount,
+				totalFilteredAmount: action.totalFilteredAmount,
+				currentYearExpensesAmount: action.currentYearExpensesAmount,
+				currentYearFilteredAmount: action.currentYearFilteredAmount,
 			};
 		case EXPENSES_TYPES.CREATE_EXPENSE:
 			return {

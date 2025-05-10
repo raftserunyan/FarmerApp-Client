@@ -12,13 +12,18 @@ export const ExpensesPage = ({
 	loadExpenses,
 	deleteExpense,
 }) => {
+
 	return (
 		<Layout>
 			<S.ExpensesPageContainer>
 				<Table
-					title={`Ծախսեր - ${
-						expenses.totalExpensesAmount ?? 0
-					} (գումարային)`}
+					title={[`Գումարային - ${expenses.totalExpensesAmount ?? 0
+						}`, `Ըստ Ֆիլտերի - ${expenses.totalFilteredAmount ?? 0
+						}`, `Գումարային տարեկան - ${expenses.currentYearExpensesAmount ?? 0
+						}`, `Ըստ ֆիլտերի տարեկան - ${expenses.currentYearFilteredAmount ?? 0
+						}`]}
+					// title={`Ծախսեր - ${expenses.totalExpensesAmount ?? 0
+					// 	} (գումարային)`}
 					data={expenses.list}
 					total={expenses.total}
 					loadData={loadExpenses}

@@ -15,6 +15,9 @@ export const loadExpenses = search => async dispatch => {
 			type: EXPENSES_TYPES.LOAD_EXPENSES,
 			list: res.results,
 			totalExpensesAmount: res.totalExpensesAmount,
+			totalFilteredAmount: res.totalFilteredAmount,
+			currentYearExpensesAmount: res.currentYearExpensesAmount,
+			currentYearFilteredAmount: res.currentYearFilteredAmount,
 			total: res.total,
 		});
 	} catch (ex) {
@@ -61,9 +64,11 @@ export const createExpense = values => async dispatch => {
 
 export const deleteExpense = ids => async dispatch => {
 	try {
-		await HttpService.delete(`expenses`, {
-			id: ids[0],
-		});
+		for (const id of ids) {
+			await HttpService.delete(`expenses`, {
+				id,
+			});
+		}
 
 		dispatch({
 			type: EXPENSES_TYPES.DELETE_EXPENSE,

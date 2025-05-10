@@ -61,7 +61,9 @@ export const createHealthStatus =
 
 export const deleteHealthStatus = ids => async dispatch => {
 	try {
-		await HttpService.delete('health-status', { ids });
+		for (const id of ids) {
+			await HttpService.delete('health-status', { id });
+		}
 
 		dispatch({
 			type: HEALTH_STATUSES_TYPES.DELETE_HEALTH_STATUS,
